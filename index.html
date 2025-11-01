@@ -1,108 +1,323 @@
-<!DOCTYPE html><html lang="bn">
+<!DOCTYPE html>
+<html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSCTC - Chandla Smart Computer Training Center</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chandla Smart Computer Training Center (CSCTC)</title>
+  <meta name="description" content="CSCTC – কম্পিউটার প্রশিক্ষণ, সেবা ও অনলাইন অ্যাপ্লিকেশন সাপোর্ট। ব্রাহ্মণপাড়া, কুমিল্লা।" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    /* ====== Base Reset ====== */
+    *, *::before, *::after { box-sizing: border-box; }
+    :root{
+      --bg:#0b1220; --card:#0f172a; --muted:#94a3b8; --text:#e2e8f0; --brand:#22c55e; --brand-2:#38bdf8; --accent:#f59e0b;
+      --ring: rgba(56,189,248,.45);
     }
-    body {
-      background: #f0f4f8;
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      background: linear-gradient(to right, #003366, #00509e);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.1em;
-    }
-    section {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-    h2 {
-      color: #003366;
-      margin-bottom: 15px;
-    }
-    ul {
-      list-style: square inside;
-      margin-bottom: 20px;
-    }
-    p {
-      margin-bottom: 15px;
-    }
-    .highlight {
-      color: #007bff;
-      font-weight: 500;
-    }
-    footer {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-      margin-top: 30px;
-    }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8em;
-      }
-      section {
-        margin: 20px 10px;
-        padding: 15px;
-      }
-    }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    section{ padding:64px 20px; }
+    .container{ max-width:1100px; margin-inline:auto; }
+
+    /* ====== Topbar / Navbar ====== */
+    .topbar{ background:rgba(15,23,42,.85); backdrop-filter: blur(8px); position:sticky; top:0; z-index:50; border-bottom:1px solid rgba(148,163,184,.15); }
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 20px; }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; }
+    .brand .logo{ width:36px; height:36px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); display:grid; place-items:center; font-weight:900; color:#0b1220; }
+    .navlinks{ display:flex; gap:18px; flex-wrap:wrap; }
+    .navlinks a{ padding:8px 12px; border-radius:999px; color:var(--muted); border:1px solid transparent; }
+    .navlinks a:hover{ color:var(--text); border-color: rgba(148,163,184,.25); }
+    .cta{ display:flex; gap:10px; }
+    .btn{ padding:10px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:#0e162b; color:var(--text); cursor:pointer; }
+    .btn.brand{ background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b1220; border:none; font-weight:700; }
+
+    /* ====== Hero ====== */
+    .hero{ display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center; }
+    .badge{ display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid rgba(148,163,184,.25); color:var(--muted); border-radius:999px; font-size:14px; }
+    .headline{ font-size:42px; line-height:1.15; margin:10px 0 12px; letter-spacing:.3px; }
+    .sub{ color:var(--muted); margin-bottom:20px; }
+    .hero-card{ background: radial-gradient(1200px 400px at 10% -10%, rgba(56,189,248,.15), transparent 60%),
+                               radial-gradient(800px 300px at 80% 0%, rgba(34,197,94,.12), transparent 60%), var(--card);
+                border:1px solid rgba(148,163,184,.15); padding:18px; border-radius:20px; }
+    .hero-stats{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:14px; }
+    .stat{ background:#0d1427; border:1px solid rgba(148,163,184,.18); border-radius:16px; padding:14px; text-align:center; }
+    .stat b{ font-size:22px; display:block; }
+
+    /* ====== Cards & Grids ====== */
+    .grid{ display:grid; gap:16px; }
+    .grid-3{ grid-template-columns: repeat(3, 1fr); }
+    .grid-2{ grid-template-columns: repeat(2, 1fr); }
+    .card{ background:var(--card); border:1px solid rgba(148,163,184,.15); border-radius:18px; padding:18px; }
+    .card h3{ margin:0 0 6px; }
+    .muted{ color:var(--muted); }
+
+    /* ====== Tables ====== */
+    table{ width:100%; border-collapse: collapse; }
+    th, td{ text-align:left; padding:12px; border-bottom:1px dashed rgba(148,163,184,.18); }
+    th{ color:#cbd5e1; font-weight:700; }
+    tr:hover td{ background:rgba(148,163,184,.06); }
+
+    /* ====== Form ====== */
+    .form{ display:grid; gap:12px; }
+    .input{ background:#0b1326; border:1px solid rgba(148,163,184,.25); color:var(--text); padding:12px 14px; border-radius:12px; outline: none; }
+    .input:focus{ border-color: var(--brand-2); box-shadow: 0 0 0 4px var(--ring); }
+    textarea.input{ min-height:120px; resize:vertical; }
+
+    /* ====== Footer ====== */
+    footer{ background:#0a0f1d; border-top:1px solid rgba(148,163,184,.15); padding:30px 20px; }
+
+    /* ====== Utilities ====== */
+    .tag{ display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(56,189,248,.12); color:#e0f2fe; border:1px solid rgba(56,189,248,.25); font-size:14px; }
+    .flex{ display:flex; gap:12px; align-items:center; }
+    .space{ height:22px; }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 980px){ .hero{ grid-template-columns: 1fr; } .grid-3{ grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px){ .navlinks{ display:none; } .grid-3, .grid-2{ grid-template-columns: 1fr; } .headline{ font-size:32px; } }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Chandla Smart Computer Training Center (CSCTC)</h1>
-    <p>প্রতিষ্ঠাকাল: ২০২১ | প্রতিষ্ঠাতা: Md. Ariful Islam Hridoy</p>
-  </header>  <section>
-    <h2>আমাদের লক্ষ্য ও উদ্দেশ্য</h2>
-    <p>
-      আমাদের লক্ষ্য হলো প্রত্যেক মানুষকে আইসিটি প্রশিক্ষণ দেওয়া, বিশেষ করে যারা টাকার অভাবে প্রশিক্ষণ নিতে পারে না তাদের জন্য সম্পূর্ণ ফ্রি প্রশিক্ষণের ব্যবস্থা। আমরা একটি উন্নত, ডিজিটালি সমৃদ্ধ জাতি গঠনের জন্য কাজ করছি।
-    </p><h2>প্রশিক্ষণ কোর্সসমূহ</h2>
-<ul>
-  <li>Microsoft Office (Word, Excel, PowerPoint, Access)</li>
-  <li>Bengali & English Typing</li>
-  <li>Internet Blogging</li>
-  <li>Photoshop</li>
-  <li>AI Tools Training (ChatGPT, Canva AI, Microsoft Copilot)</li>
-</ul>
+  <!-- ====== Topbar ====== -->
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <span class="logo">CS</span>
+        <span>Chandla Smart Computer Training Center</span>
+      </a>
+      <nav class="navlinks">
+        <a href="#about">আমাদের সম্পর্কে</a>
+        <a href="#courses">কোর্স</a>
+        <a href="#services">সেবা</a>
+        <a href="#admission">অনলাইন ভর্তি</a>
+        <a href="#contact">যোগাযোগ</a>
+      </nav>
+      <div class="cta">
+        <a href="#admission" class="btn brand">Apply Now</a>
+      </div>
+    </div>
+  </header>
 
-<h2>অনলাইন সেবা</h2>
-<p>
-  চাকরি ও ভর্তি আবেদন, পুলিশ ক্লিয়ারেন্স, জন্ম নিবন্ধন, এনআইডি সংশোধন ও আবেদন, পাসপোর্ট, ড্রাইভিং লাইসেন্স, ভূমি কর ও ট্যাক্স, অনলাইন জিডি, স্ক্যানিং, প্রিন্টিং, ফটোকপি সহ আরও বিভিন্ন সেবা প্রদান করা হয়।
-</p>
+  <!-- ====== Hero ====== -->
+  <section id="home" class="container">
+    <div class="hero">
+      <div>
+        <span class="badge">প্রতিষ্ঠিত: ২০২১ · লোকেশন: দক্ষিণ চান্দলা বাজার, ব্রাহ্মণপাড়া, কুমিল্লা</span>
+        <h1 class="headline">ICT শিক্ষা সকলের জন্য — <span style="color:var(--brand-2)">CSCTC</span>
+          এর সাথে স্কিল আপগ্রেড করুন</h1>
+        <p class="sub">Microsoft Office, গ্রাফিক্স, ব্লগিং, টাইপিং, Microsoft Access এবং AI Tools (ChatGPT, Canva AI, Microsoft Copilot) —
+          অভিজ্ঞ ট্রেইনার <b>Md. Ariful Islam Hridoy</b> এর তত্ত্বাবধানে।</p>
+        <div class="flex">
+          <a href="#courses" class="btn">কোর্স দেখুন</a>
+          <a href="#admission" class="btn brand">অনলাইন ভর্তি</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>2021→</b><span class="muted">সেবায় আছি</span></div>
+          <div class="stat"><b>20+ </b><span class="muted">সেবা সমূহ</span></div>
+          <div class="stat"><b>100+ </b><span class="muted">Q&A সংগ্রহ</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3 style="margin:0 0 8px">দ্রুত সেবা (Quick Links)</h3>
+        <div class="grid grid-2">
+          <a class="card" href="#services"><h3>ফর্ম পূরণ</h3><p class="muted">চাকরি/ভর্তি/পাসপোর্ট/পুলিশ ক্লিয়ারেন্স</p></a>
+          <a class="card" href="#services"><h3>প্রিন্টিং</h3><p class="muted">সাদাকালো ও কালার প্রিন্ট, স্ক্যান, PDF</p></a>
+          <a class="card" href="#admission"><h3>অনলাইন ভর্তি</h3><p class="muted">কোর্সে সরাসরি আবেদন করুন</p></a>
+          <a class="card" href="#contact"><h3>যোগাযোগ</h3><p class="muted">মোবাইল ও ইমেইল</p></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h2>যোগাযোগ</h2>
-<p>
-  <strong>ঠিকানা:</strong> দক্ষিণ চান্দলা বাজার (চেয়ারম্যান অফিসের উত্তর পাশে), ব্রাহ্মণপাড়া, কুমিল্লা<br />
-  <strong>মোবাইল:</strong> 01845793219, 01540123513<br />
-  <strong>ইমেইল:</strong> csctc3526@gmail.com<br />
-  <strong>ওয়েব:</strong> <span class="highlight">https://csctc.github.io</span>
-</p>
+  <!-- ====== About ====== -->
+  <section id="about">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2>আমাদের সম্পর্কে</h2>
+        <p class="muted">CSCTC-এর লক্ষ্য হল ব্রাহ্মণপাড়া ও আশেপাশের মানুষের কাছে সাশ্রয়ী মূল্যে মানসম্মত ICT শিক্ষা পৌঁছে দেয়া। যারা শিখতে পারে না,
+          তাদের জন্য বিশেষ <b>ফ্রি ট্রেনিং</b> সুবিধা রয়েছে।</p>
+        <div class="space"></div>
+        <span class="tag">Founder: Md. Ariful Islam Hridoy</span>
+      </div>
+      <div class="card">
+        <h2>কেন CSCTC?</h2>
+        <ul class="muted">
+          <li>হ্যান্ডস-অন ক্লাস, রিয়েল-লাইফ প্রোজেক্ট</li>
+          <li>ফ্রি রিসোর্স: 100+ কম্পিউটার Q&A</li>
+          <li>জব/অ্যাডমিশন সাপোর্ট ও অফিসিয়াল সেবা</li>
+          <li>ফাস্ট-ট্র্যাক টাইপিং ও MS Office এক্সপার্টিজ</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-  </section>  <footer>
-    &copy; 2025 Chandla Smart Computer Training Center | All Rights Reserved
+  <!-- ====== Courses ====== -->
+  <section id="courses">
+    <div class="container">
+      <h2 style="margin-top:0">জনপ্রিয় কোর্স</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Microsoft Office Mastery</h3>
+          <p class="muted">Word, Excel, PowerPoint, Access — শূন্য থেকে এক্সপার্ট।</p>
+          <p><b>সময়:</b> ৩ মাস · <b>লেভেল:</b> Beginner→Pro</p>
+        </div>
+        <div class="card">
+          <h3>Graphics Design (Photoshop)</h3>
+          <p class="muted">ফটো রিটাচিং, ব্যানার, থাম্বনেইল, প্রিন্ট রেডি ডিজাইন।</p>
+          <p><b>সময়:</b> ২ মাস · <b>লেভেল:</b> Beginner</p>
+        </div>
+        <div class="card">
+          <h3>Blogging & Web Basics</h3>
+          <p class="muted">ইন্টারনেট ব্লগিং, ডোমেইন/হোস্টিং, বেসিক ওয়েব।</p>
+          <p><b>সময়:</b> ১.৫ মাস · <b>লেভেল:</b> Beginner</p>
+        </div>
+        <div class="card">
+          <h3>Bangla & English Typing</h3>
+          <p class="muted">বিজয়/ইউনিকোড, স্পিড টার্গেট ও একিউরেসি ট্র্যাকিং।</p>
+          <p><b>সময়:</b> ১ মাস · <b>লেভেল:</b> All</p>
+        </div>
+        <div class="card">
+          <h3>Microsoft Access</h3>
+          <p class="muted">ডাটাবেস, ফর্ম, রিপোর্ট ও অটোমেশন।</p>
+          <p><b>সময়:</b> ১.৫ মাস · <b>লেভেল:</b> Intermediate</p>
+        </div>
+        <div class="card">
+          <h3>AI Tools Quickstart</h3>
+          <p class="muted">ChatGPT, Canva AI, Microsoft Copilot — কাজের ব্যবহার।</p>
+          <p><b>সময়:</b> ৪ সপ্তাহ · <b>লেভেল:</b> All</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Services ====== -->
+  <section id="services">
+    <div class="container">
+      <h2 style="margin-top:0">আমাদের সেবা</h2>
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>সেবার নাম</th>
+              <th>বিবরণ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>চাকরি/ভর্তি আবেদন</td><td>অনলাইন ফর্ম ফিল-আপ ও সাবমিশন</td></tr>
+            <tr><td>পুলিশ ক্লিয়ারেন্স</td><td>ডকুমেন্ট প্রস্তুতি ও আবেদন</td></tr>
+            <tr><td>জন্ম নিবন্ধন</td><td>নতুন/সংশোধন</td></tr>
+            <tr><td>এনআইডি সংশোধন</td><td>ডাটা আপডেট ও আবেদন</td></tr>
+            <tr><td>টাইপিং/ফটোকপি/লেমিনেটিং</td><td>দ্রুত ডেলিভারি</td></tr>
+            <tr><td>BMET বিদেশি প্রশিক্ষণ</td><td>আবেদন প্রসেসিং</td></tr>
+            <tr><td>অনলাইন জিডি</td><td>সহায়তা</td></tr>
+            <tr><td>পাসপোর্ট আবেদন</td><td>ফর্ম ফিল-আপ ও সাবমিশন</td></tr>
+            <tr><td>প্রিন্টিং/স্ক্যানিং/PDF</td><td>সাদাকালো ও কালার</td></tr>
+            <tr><td>জমির নামজারি/খাজনা</td><td>অনলাইন আবেদন</td></tr>
+            <tr><td>টিআইএন সার্টিফিকেট</td><td>নতুন/সংশোধন</td></tr>
+            <tr><td>সার্টিফিকেট সংশোধন</td><td>বোর্ড/বিশ্ববিদ্যালয়</td></tr>
+            <tr><td>ইমেইল প্রেরণ</td><td>অফিসিয়াল মেইল সহায়তা</td></tr>
+            <tr><td>ড্রাইভিং লাইসেন্স</td><td>আবেদন ও প্রিন্টিং</td></tr>
+            <tr><td>অনলাইন ভ্যাকসিন আবেদন</td><td>সাপোর্ট</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Admission Form ====== -->
+  <section id="admission">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2>অনলাইন ভর্তি ফর্ম</h2>
+        <p class="muted">ফর্ম পূরণ করে সাবমিট করুন। আপনার ইমেইলে কনফার্মেশন যাবে।</p>
+        <form class="form" id="applyForm">
+          <input class="input" type="text" name="name" placeholder="পূর্ণ নাম" required />
+          <input class="input" type="tel" name="phone" placeholder="মোবাইল নম্বর" required />
+          <input class="input" type="email" name="email" placeholder="ইমেইল" />
+          <select class="input" name="course" required>
+            <option value="">কোর্স নির্বাচন করুন</option>
+            <option>Microsoft Office Mastery</option>
+            <option>Graphics Design (Photoshop)</option>
+            <option>Blogging & Web Basics</option>
+            <option>Bangla & English Typing</option>
+            <option>Microsoft Access</option>
+            <option>AI Tools Quickstart</option>
+          </select>
+          <textarea class="input" name="message" placeholder="বার্তা (ঐচ্ছিক)"></textarea>
+          <button class="btn brand" type="submit">ফর্ম সাবমিট</button>
+          <p id="formMsg" class="muted"></p>
+        </form>
+      </div>
+      <div class="card">
+        <h2>ফি ও ব্যাচ তথ্য</h2>
+        <ul class="muted">
+          <li>ফি কনফার্মেশনের পর জানানো হবে।</li>
+          <li>ব্যাচ সাইজ: ১২–১৫ জন</li>
+          <li>ক্লাস টাইম: সকাল/বিকেল শিফট</li>
+          <li>সার্টিফিকেট: কোর্স সমাপ্তির পর প্রদান</li>
+        </ul>
+        <div class="space"></div>
+        <span class="tag">স্কলারশিপ/ফ্রি ট্রেনিং সুবিধা আছে</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Contact ====== -->
+  <section id="contact">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2>যোগাযোগ</h2>
+        <p class="muted">অবস্থান: দক্ষিণ চান্দলা বাজার (চেয়ারম্যান অফিসের উত্তর পাশে), ব্রাহ্মণপাড়া, কুমিল্লা</p>
+        <div class="space"></div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>মোবাইল</h3>
+            <p><a href="tel:01845793219">01845793219</a>, <a href="tel:01540123513">01540123513</a></p>
+          </div>
+          <div class="card">
+            <h3>ইমেইল</h3>
+            <p><a href="mailto:csctc3526@gmail.com">csctc3526@gmail.com</a><br/>
+               <a href="mailto:ariful3526@gmail.com">ariful3526@gmail.com</a> <span class="muted">(প্রোজেক্ট)</span></p>
+          </div>
+        </div>
+        <div class="space"></div>
+        <a class="btn" href="#admission">এখনই আবেদন করুন</a>
+      </di v>
+      <div class="card">
+        <h2>Chandla Blood Foundation</h2>
+        <p class="muted">প্রতিষ্ঠাতা: Md. Ariful Islam Hridoy — রক্তদান ও জরুরি সহায়তায় স্বেচ্ছাসেবা।</p>
+        <div class="space"></div>
+        <span class="tag">কমিউনিটি ইনিশিয়েটিভ</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+      <p>© <span id="year"></span> CSCTC. All rights reserved.</p>
+      <p class="muted">Designed & Maintained by Md. Ariful Islam Hridoy</p>
+    </div>
   </footer>
+
+  <script>
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple form handler (no backend): send to email and show message
+    const form = document.getElementById('applyForm');
+    const msg = document.getElementById('formMsg');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(form);
+      const params = new URLSearchParams(data).toString();
+      // mailto fallback
+      const to = 'csctc3526@gmail.com';
+      const subject = encodeURIComponent('New Admission Request – CSCTC');
+      const body = encodeURIComponent(
+        `Name: ${data.get('name')}\nPhone: ${data.get('phone')}\nEmail: ${data.get('email')||''}\nCourse: ${data.get('course')}\nMessage: ${data.get('message')||''}`
+      );
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      msg.textContent = 'ধন্যবাদ! আপনার ডিফল্ট ইমেইল অ্যাপে একটি মেইল ওপেন হয়েছে—সেন্ড করলেই আবেদন সম্পন্ন হবে।';
+      form.reset();
+    });
+  </script>
 </body>
 </html>
